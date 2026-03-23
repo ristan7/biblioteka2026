@@ -12,12 +12,24 @@ public class Biblioteka implements BibliotekaInterface {
 	
 	@Override
 	public void dodajKnjigu(Knjiga knjiga) {
+		if(knjiga == null) {
+			throw new NullPointerException("Knjiga ne sme biti null");
+		}
+		if(knjige.contains(knjiga)) {
+			throw new IllegalArgumentException("Knjiga vec postoji");
+		}
 		knjige.add(knjiga);
 
 	}
 
 	@Override
 	public void obrisiKnjigu(Knjiga knjiga) {
+		if(knjiga == null) {
+			throw new NullPointerException("Knjiga ne sme biti null");
+		}
+		if(!knjige.contains(knjiga)) {
+			throw new IllegalArgumentException("Knjiga ne postoji");
+		}
 		knjige.remove(knjiga);
 
 	}
